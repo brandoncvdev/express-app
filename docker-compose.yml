@@ -1,0 +1,17 @@
+#docker-compose.yml
+version: '3.3'
+
+services:
+  app:
+    container_name: mean-server
+    restart: always
+    build: .
+    ports:
+      - '80:3000'
+    links:
+      - mongo
+  mongo:
+    container_name: mongo-database
+    image: mongo
+    ports:
+      - '27017:27017'
